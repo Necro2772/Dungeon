@@ -1,0 +1,25 @@
+import Logic.Edge;
+import Logic.Room;
+import Logic.Utilities;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class UtilitiesTest {
+    @Test
+    public void willInterceptTest() { // Probably wants more test cases...
+        Edge[] edges1 = new Edge[]{new Edge(0, 0, 5, 5)};
+        Edge[] edges2 = new Edge[]{new Edge(5, 0, 0, 5)};
+        for (int i = 0; i < edges1.length; i++) {
+            assertTrue(Utilities.willIntercept(edges1[i], edges2[i]));
+        }
+
+        edges1 = new Edge[]{new Edge(0, 0, 5, 5),
+                new Edge(0, 0, 5, 5)};
+        edges2 = new Edge[]{new Edge(0, 0, 5, 5),
+                new Edge(5, 0, 2, 1)};
+        for (int i = 0; i < edges1.length; i++) {
+            assertFalse(Utilities.willIntercept(edges1[i], edges2[i]));
+        }
+    }
+}
