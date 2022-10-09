@@ -1,4 +1,4 @@
-package Logic;
+package MapLogic;
 
 import java.util.ArrayList;
 import java.util.List;

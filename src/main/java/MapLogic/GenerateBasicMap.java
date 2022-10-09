@@ -1,4 +1,4 @@
-package Logic;
+package MapLogic;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -122,6 +122,9 @@ public class GenerateBasicMap {
                     minEdges = 2; // Edge column, 2 edges min
                 } else {
                     nearby.removeIf((Room item) -> getCol(item) == getCol(r)); // Remove from same column.
+                    // Removing from same column seems to very occasionally cause rooms to be blocked off, with very long vertical paths...
+                    // But that usually doesn't happen! it's fine!!
+
                     genEdge(r, getRoomNear(r, nearby)); // Add 1 edge down
                     minEdges = 3; // Center column, 3 edges min
                 }
@@ -135,6 +138,22 @@ public class GenerateBasicMap {
                 }
             }
         }
+
+
+        ArrayList<Room> disconnectedRooms = new ArrayList<>();
+        for (Room room : rooms) {
+            boolean isConnected = false;
+            for (Edge edge : edges) {
+                if (edge.getRoom1().equals(room) || edge.getRoom2().equals(room)) {
+                    isConnected = true;
+                    break;
+                }
+            }
+            if (!isConnected) disconnectedRooms.add(room);
+        }
+        if (!disconnectedRooms.isEmpty()) rooms.removeAll(disconnectedRooms);
+        // TODO: check for disconnected components at end and remove them. Seems to be pretty rare though for now
+        // TODO: update check for validity, sometimes allows edges to cross rooms
     }
     private int numEdges(Room r) {
         return (int) edges.stream().filter(edge -> edge.getRoom1().equals(r) || edge.getRoom2().equals(r)).count();

@@ -1,4 +1,6 @@
-package Logic;
+package MapLogic;
+
+import javafx.util.Pair;
 
 import java.util.AbstractMap;
 import java.util.Objects;
@@ -7,9 +9,9 @@ public class Edge { // Unweighted
     private final Room r1;
     private final Room r2;
 
-    private final AbstractMap.SimpleEntry<Integer, Integer> door1;
+    private final Pair<Integer, Integer> door1;
 
-    private final AbstractMap.SimpleEntry<Integer, Integer> door2;
+    private final Pair<Integer, Integer> door2;
 
     public Edge(Room r1, Room r2) {
         this.r1 = r1;
@@ -50,11 +52,11 @@ public class Edge { // Unweighted
         return r2;
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getDoor1() {
+    public Pair<Integer, Integer> getDoor1() {
         return door1;
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getDoor2() {
+    public Pair<Integer, Integer> getDoor2() {
         return door2;
     }
 

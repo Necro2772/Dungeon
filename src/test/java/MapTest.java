@@ -1,7 +1,5 @@
-import Logic.*;
+import MapLogic.*;
 import org.junit.jupiter.api.Test;
-
-import java.util.AbstractMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

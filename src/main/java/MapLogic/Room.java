@@ -1,6 +1,9 @@
-package Logic;
+package MapLogic;
+
+import javafx.util.Pair;
 
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.lang.Object;
 
@@ -35,20 +38,34 @@ public class Room {
         return height;
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getTop() {
-        return new AbstractMap.SimpleEntry<>(x + width / 2, y - 1);
+    public ArrayList<Pair<Integer, Integer>> getSpaces() {
+        ArrayList<Pair<Integer, Integer>> spaces = new ArrayList<>();
+        for (int x = this.x; x < this.x + width - 1; x++) {
+            for (int y = this.y; y < this.y + height - 1; y++) {
+                spaces.add(new Pair<>(x, y));
+            }
+        }
+        return spaces;
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getBottom() {
-        return new AbstractMap.SimpleEntry<>(x + width / 2, y + height);
+    public Pair<Integer, Integer> getTop() {
+        return new Pair<>(x + width / 2, y - 1);
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getLeft() {
-        return new AbstractMap.SimpleEntry<>(x - 1, y + height / 2);
+    public Pair<Integer, Integer> getBottom() {
+        return new Pair<>(x + width / 2, y + height);
     }
 
-    public AbstractMap.SimpleEntry<Integer, Integer> getRight() {
-        return new AbstractMap.SimpleEntry<>(x + width, y + height / 2);
+    public Pair<Integer, Integer> getLeft() {
+        return new Pair<>(x - 1, y + height / 2);
+    }
+
+    public Pair<Integer, Integer> getRight() {
+        return new Pair<>(x + width, y + height / 2);
+    }
+
+    public Pair<Integer, Integer> getCenter() {
+        return new Pair<>(x + width / 2, y + height / 2);
     }
 
     public String toString() {

@@ -1,4 +1,5 @@
-import Logic.Room;
+import MapLogic.Room;
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.util.AbstractMap;
@@ -33,14 +34,14 @@ public class RoomTest {
 
     private void testSides(int[] expectedX, int[] expectedY, Room r) {
         for (int i = 0; i < expectedX.length; i++) {
-            AbstractMap.SimpleEntry<Integer, Integer> out = switch (i) {
+            Pair<Integer, Integer> out = switch (i) {
                 case 0 -> r.getTop();
                 case 1 -> r.getBottom();
                 case 2 -> r.getLeft();
                 case 3 -> r.getRight();
                 default -> null;
             };
-            assertEquals(out, new AbstractMap.SimpleEntry<>(expectedX[i], expectedY[i]));
+            assertEquals(out, new Pair<>(expectedX[i], expectedY[i]));
         }
     }
 }

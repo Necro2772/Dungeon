@@ -1,5 +1,6 @@
-import Logic.Edge;
-import Logic.Room;
+import MapLogic.Edge;
+import MapLogic.Room;
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import java.util.AbstractMap;
@@ -27,7 +28,7 @@ public class EdgeTest {
                 new Room(5, 5, 3, 3),
                 new Room(5, 15, 3, 3),
                 new Room(15, 15, 3, 3)};
-        LinkedList<AbstractMap.SimpleEntry<Integer, Integer>> expected1 = new LinkedList<>(), expected2 = new LinkedList<>();
+        LinkedList<Pair<Integer, Integer>> expected1 = new LinkedList<>(), expected2 = new LinkedList<>();
         expected1.add(r1[0].getRight());
         expected1.add(r1[1].getTop());
         expected1.add(r1[2].getLeft());
