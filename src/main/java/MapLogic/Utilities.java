@@ -36,6 +36,7 @@ public class Utilities {
     }
 
     public static boolean willIntercept(Edge e1, Edge e2) {
+        // checks if lines are far apart
         if (e1.getMaxY() <= e2.getMinY() || e2.getMaxY() <= e1.getMinY() ||
         e1.getMaxX() <= e2.getMinX() || e2.getMaxX() <= e1.getMinX()) return false;
 //        if (e1.getRoom1().equals(e2.getRoom1()) || e1.getRoom1().equals(e2.getRoom2()) ||
@@ -61,6 +62,8 @@ public class Utilities {
 
     // Helper methods
     private static boolean sameDoorIntercept(Pair<Integer, Integer> overlap, Pair<Integer, Integer> p1, Pair<Integer, Integer> p2) {
+        if (p1.equals(p2)) return false;
+
         double v1x = p1.getKey() - overlap.getKey();
         double v1y = overlap.getValue() - p1.getValue();
         double v2x = p2.getKey() - overlap.getKey();
